@@ -2,6 +2,12 @@
   padding: 15px;
   width: 200px;
   background-color: #ddd;
+  position: relative;
+
+  &__nav-wrapper {
+    position: sticky;
+    top: 80px;
+  }
 
 
   &__title {
@@ -14,6 +20,7 @@
     color: #000;
     text-align: center;
     background-color: lightsalmon;
+    list-style: none;
     cursor: pointer;
 
     &:hover {
