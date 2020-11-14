@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
-import bemCssModules from "bem-css-modules";
-import { Redirect, Switch, Route } from "react-router-dom";
+import React, { useContext } from 'react';
+import bemCssModules from 'bem-css-modules';
+import { Redirect, Switch, Route } from 'react-router-dom';
 
-import Courses from "../Courses/Courses";
-import UserCourses from "../UserCourses/UserCourses";
-import { StoreContext } from "../../store/StoreProvider";
+import Courses from '../Courses/Courses';
+import UserCourses from '../UserCourses/UserCourses';
+import AdminPanel from '../AdminPanel/AdminPanel';
+import { StoreContext } from '../../store/StoreProvider';
 
-import { default as ContentStyles } from "./Content.module.scss";
+import { default as ContentStyles } from './Content.module.scss';
 
 const style = bemCssModules(ContentStyles);
 
@@ -21,18 +22,14 @@ const Content = () => {
   return (
     <main className={style()}>
       <Switch>
-        <Route exact path="/" render={() => <Courses />} />
+        <Route exact path='/' render={() => <Courses />} />
         {isUserLogged && (
-          <Route exact path="/my-courses" render={() => <UserCourses />} />
+          <Route exact path='/my-courses' render={() => <UserCourses />} />
         )}
         {isAdmin && (
-          <Route
-            exact
-            path="/manage-courses"
-            render={() => <p>Zarządzanie kursami</p>}
-          />
+          <Route exact path='/manage-courses' render={() => <AdminPanel />} />
         )}
-        <Redirect to="/" />
+        <Redirect to='/' />
       </Switch>
     </main>
   );
